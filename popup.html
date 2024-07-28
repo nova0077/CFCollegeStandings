@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10px;
+    }
+    #refreshButton {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #refreshButton:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <button id="refreshButton">Re-fetch Organization List</button>
+
+  <script>
+    document.getElementById('refreshButton').addEventListener('click', () => {
+      chrome.runtime.sendMessage({ action: 'refreshList' }, (response) => {
+        if (response && response.status === 'success') {
+          alert('List updated successfully');
+        } else {
+          alert('Failed to update the list');
+        }
+        window.close();
+      });
+    });
+  </script>
+</body>
+</html>
