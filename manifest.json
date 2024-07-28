@@ -6,7 +6,8 @@
   "permissions": [
     "activeTab",
     "scripting",
-    "tabs"
+    "tabs",
+    "storage"
   ],
   "background": {
     "service_worker": "background.js"
@@ -15,6 +16,10 @@
     {
       "matches": ["https://codeforces.com/contest/*/standings*"],
       "js": ["contentScript.js"]
+    },
+    {
+      "matches": ["https://codeforces.com/*"],
+      "js": ["listScript.js"]
     }
   ],
   "action": {
