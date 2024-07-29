@@ -15,8 +15,6 @@ The **CF College Standings** Chrome extension enhances your Codeforces experienc
 
 ![organization list](assets/image3.png)
 
-![Common standings](assets/image.png) 
-
 ![College standings](assets/image1.png)
 
 ## Installation
