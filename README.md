@@ -1,4 +1,5 @@
 # CF College Standings
+
 ![](assets/logo.png)
 
 ## Overview
@@ -13,7 +14,9 @@ The **CF College Standings** Chrome extension enhances your Codeforces experienc
 - **Manual Refresh**: Allows you to manually refresh the organization list by clicking the "Refetch Organization List" button in the extension popup.
 
 ![organization list](assets/image3.png)
+
 ![Common standings](assets/image.png) 
+
 ![College standings](assets/image.png)
 
 ## Installation
