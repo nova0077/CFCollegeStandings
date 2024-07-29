@@ -30,14 +30,14 @@ The **CF College Standings** Chrome extension enhances your Codeforces experienc
 2. You will see a new button **"College Standings"** next to the **"Friends Standings"** button. Click it to view the standings of users from your organization.
 3. If the **"College Standings"** button is missing or you can't find your friend in the college standings, ensure:
    - Your profile includes your organization.
-   - Your organization and your friend's organization match exactly (check for duplicate names).
+   - Your organization and your friend's organization match exactly (check for the organization ID by clicking on the organization name/URL on your profile).
 
 ## Refetching Data
 
 - The extension automatically updates the list every 24 hours.
-- To manually refetch the organization list, click the extension icon and then click on the "Re-fetch Organization List" button in the popup.
+- To manually re-fetch the organization list, click the extension icon and then click on the "Re-fetch Organization List" button in the popup.
 
 ## Feedback & Support
 
-- **Feedback**: Feel free to provide feedback on the extension.
-- **Bugs & Issues**: If you encounter any errors or bugs, please leave a comment on this repository.
+- **Feedback**: Please feel free to give me feedback on the extension.
+- **Bugs & Issues**: Please comment on this repository if you encounter any errors or bugs.
