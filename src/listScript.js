@@ -4,6 +4,7 @@ function getCsrfToken() {
   return csrfTokenElement ? csrfTokenElement.getAttribute('content') : null;
 }
 
+
 // Function to get user handle from profile page
 async function getUserHandle() {
   const x = document.getElementsByClassName('lang-chooser');
@@ -13,14 +14,11 @@ async function getUserHandle() {
     if (profileLink) {
       const profileName = profileLink.textContent.trim();
       return profileName;
-    } else {
-      console.log('User handle not found');
     }
-  } else {
-    console.log('Element with class "lang-chooser" not found');
   }
-  return "xyz";
+  return "";
 }
+
 
 // Function to get user organization from profile page
 async function getUserOrganization(handle) {
@@ -31,6 +29,7 @@ async function getUserOrganization(handle) {
   const organizationLink = doc.querySelector('div.main-info div a[href^="/ratings/organization/"]');
   return organizationLink ? organizationLink.getAttribute('href').split('/').pop() : null;
 }
+
 
 // Function to get or create the list ID
 async function getOrCreateList(csrfToken, listName) {
@@ -62,13 +61,14 @@ async function getOrCreateList(csrfToken, listName) {
       },
       body: data.toString()
     });
-    console.log(createResponse);
+
     if (createResponse.ok) {
       return await getOrCreateList(csrfToken, listName);
     }
   }
   return listId;
 }
+
 
 // Function to get handles from organization page with pagination
 async function getHandlesFromOrganization(organizationId) {
@@ -88,6 +88,7 @@ async function getHandlesFromOrganization(organizationId) {
       hasMorePages = false;
     } else {
       const lastFetchedUser = ratedUsers[ratedUsers.length - 1].textContent.trim();
+
       if (userList.length > 0 && userList[userList.length - 1] === lastFetchedUser) {
         hasMorePages = false;
       } else {
@@ -102,9 +103,9 @@ async function getHandlesFromOrganization(organizationId) {
       hasMorePages = false;
     }
   }
-
   return userList;
 }
+
 
 // Function to add members to the list
 async function addMembersToList(csrfToken, listId, handlesToAdd) {
@@ -112,7 +113,7 @@ async function addMembersToList(csrfToken, listId, handlesToAdd) {
   const data = new FormData();
   data.append('csrf_token', csrfToken);
   data.append('action', 'addMembers');
-  data.append('handlesToAdd', handlesToAdd.join(' ')); // Ensure handles are space-separated
+  data.append('handlesToAdd', handlesToAdd.join(' '));
 
   const response = await fetch(url, {
     method: 'POST',
@@ -121,41 +122,39 @@ async function addMembersToList(csrfToken, listId, handlesToAdd) {
     },
     body: data
   });
-
   return response.ok;
 }
+
 
 // Re-fetch organization list function
 async function refetchOrganizationList(sendResponse = () => {}) {
   const csrfToken = getCsrfToken();
+
   if (csrfToken) {
     const handle = await getUserHandle();
     const organizationId = await getUserOrganization(handle);
+
     if (organizationId) {
       const listName = `organization-${organizationId}`;
       const listId = await getOrCreateList(csrfToken, listName);
+
       if (listId) {
         const handles = await getHandlesFromOrganization(organizationId);
-        console.log(handles);
         const addMembersResponse = await addMembersToList(csrfToken, listId, handles);
+
         if (addMembersResponse) {
-          console.log("Members added successfully");
           localStorage.setItem('listId', listId);
           sendResponse({ status: 'success' });
         } else {
-          console.log("There is an error adding members, please re-try");
           sendResponse({ status: 'error' });
         }
       } else {
-        console.error('Failed to create or get the list');
         sendResponse({ status: 'error' });
       }
     } else {
-      console.error('Organization ID not found');
       sendResponse({ status: 'error' });
     }
   } else {
-    console.error('CSRF token not found');
     sendResponse({ status: 'error' });
   }
 }

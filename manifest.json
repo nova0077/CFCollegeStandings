@@ -4,25 +4,26 @@
   "version": "1.0",
   "description": "Adds a custom standings tab to Codeforces.",
   "permissions": [
-    "activeTab",
-    "scripting",
     "tabs",
     "storage"
   ],
-  "background": {
-    "service_worker": "background.js"
-  },
   "content_scripts": [
     {
       "matches": ["https://codeforces.com/contest/*/standings*"],
-      "js": ["contentScript.js"]
+      "js": ["src/contentScript.js"]
     },
     {
       "matches": ["https://codeforces.com/*"],
-      "js": ["listScript.js"]
+      "js": ["src/listScript.js"]
     }
   ],
   "action": {
-    "default_popup": "popup.html"
+    "default_icon": {
+      "16": "assets/logo.png",
+      "24": "assets/logo.png",
+      "32": "assets/logo.png"
+    },
+    "default_title": "CF College Standings",
+    "default_popup": "popup/popup.html"
   }
 }
