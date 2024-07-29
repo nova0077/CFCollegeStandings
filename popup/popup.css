@@ -1,0 +1,25 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 10px;
+}
+
+#refreshButton {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#refreshButton:hover {
+  background-color: #45a049;
+}
+
+#status {
+  margin-top: 15px;
+  color: #007bff;
+  font-size: 1.25em;
+}
