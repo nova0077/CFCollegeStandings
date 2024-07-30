@@ -3,10 +3,7 @@
   "name": "CF College Standings",
   "version": "1.0",
   "description": "Adds a custom standings tab to Codeforces.",
-  "permissions": [
-    "tabs",
-    "storage"
-  ],
+  "permissions": [],
   "content_scripts": [
     {
       "matches": ["https://codeforces.com/contest/*/standings*"],
