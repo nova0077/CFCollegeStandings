@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "CF College Standings",
-  "version": "1.0",
-  "description": "Adds a custom standings tab to Codeforces.",
+  "version": "2.0",
+  "description": "Adds a custom standings tab to Codeforces & shows your country rank after completion of every contest",
   "permissions": [],
   "content_scripts": [
     {
@@ -12,6 +12,10 @@
     {
       "matches": ["https://codeforces.com/*"],
       "js": ["src/listScript.js"]
+    },
+    {
+      "matches": ["https://codeforces.com/contest/*"],
+      "js": ["src/countryRank.js"]
     }
   ],
   "action": {
