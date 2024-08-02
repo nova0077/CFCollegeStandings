@@ -92,17 +92,21 @@ async function getHandlesFromOrganization(organizationId) {
       if (userList.length > 0 && userList[userList.length - 1] === lastFetchedUser) {
         hasMorePages = false;
       } else {
-        ratedUsers.forEach(user => {
+        for (const user of ratedUsers) {
           userList.push(user.textContent.trim());
-        });
+          if (userList.length >= 1000) {
+            hasMorePages = false;
+            break;
+          }
+        }
         page++;
       }
     }
-
     if (ratedUsers.length < 200) {
       hasMorePages = false;
     }
   }
+  
   return userList;
 }
 
@@ -127,7 +131,7 @@ async function addMembersToList(csrfToken, listId, handlesToAdd) {
 
 
 // Re-fetch organization list function
-async function refetchOrganizationList(sendResponse = () => {}) {
+async function refetchOrganizationList(sendResponse = () => { }) {
   const csrfToken = getCsrfToken();
 
   if (csrfToken) {
@@ -168,7 +172,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 // Initial execution
-(async function() {
+(async function () {
   const lastFetched = localStorage.getItem('lastFetched');
   const oneDay = 24 * 60 * 60 * 1000;
   const now = Date.now();

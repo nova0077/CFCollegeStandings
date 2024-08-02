@@ -12,10 +12,14 @@ The **CF College Standings** Chrome extension enhances your Codeforces experienc
 - **Standings Button**: Adds a **"College Standings"** button to the standings page, located to the right of the friends' standings button.
 - **Automatic Data Fetch**: Updates the list of users from your organization every 24 hours.
 - **Manual Refresh**: Allows you to manually refresh the organization list by clicking the "Refetch Organization List" button in the extension popup.
+- **Country Rank Feature**: Displays your country rank on the contest page. This feature will only be active after the ratings have been released. Note that you need to wait for 10-15 seconds for the first time you open any contest page to see your rank.
 
 ![organization list](assets/image3.png)
 
 ![College standings](assets/image1.png)
+
+![Country Rank](assets/image4.png)
+
 
 ## Installation
 
@@ -31,6 +35,8 @@ The **CF College Standings** Chrome extension enhances your Codeforces experienc
 3. If the **"College Standings"** button is missing or you can't find your friend in the college standings, ensure:
    - Your profile includes your organization.
    - Your organization and your friend's organization match exactly (check for duplicate names).
+4. To view your country rank on the contest page, please wait for 10-15 seconds for the first time you open a contest page. The rank will be displayed once the ratings have been released.
+
 
 ## Refetching Data
 
